@@ -1,6 +1,6 @@
-# BWAdmin - Resort/Hotel Booking Platform Admin Panel
+# BWAdmin - Resort/Hotel Booking Platform (Full Stack)
 
-A comprehensive React.js admin web application for managing resort and hotel bookings, built with Material-UI and modern web technologies.
+A comprehensive full-stack application for managing resort and hotel bookings, featuring a React.js admin frontend and Node.js/Express backend API.
 
 ## 🚀 Features
 
@@ -27,7 +27,8 @@ A comprehensive React.js admin web application for managing resort and hotel boo
 
 ## 🛠️ Tech Stack
 
-- **Frontend Framework**: React.js 18.2.0
+### Frontend (Client)
+- **Framework**: React.js 18.2.0
 - **Language**: JavaScript (ES6+)
 - **UI Library**: Material-UI (MUI) 5.15.1
 - **Routing**: React Router DOM 6.20.1
@@ -37,49 +38,92 @@ A comprehensive React.js admin web application for managing resort and hotel boo
 - **Icons**: Material-UI Icons
 - **Build Tool**: Create React App
 
+### Backend (Server)
+- **Framework**: Node.js + Express.js 4.18.2
+- **Language**: JavaScript (ES6+)
+- **Authentication**: JWT (JSON Web Tokens)
+- **Security**: Helmet, CORS
+- **Logging**: Morgan
+- **Development**: Nodemon
+- **Data Storage**: In-memory (JSON objects)
+
 ## 📁 Project Structure
 
 ```
-src/
-├── components/
-│   └── common/
-│       └── ProtectedRoute.js
-├── contexts/
-│   ├── AuthContext.js
-│   └── NotificationContext.js
-├── layouts/
-│   ├── Layout.js
-│   ├── Header.js
-│   └── Sidebar.js
-├── pages/
-│   ├── auth/
-│   │   └── Login.js
-│   ├── bookings/
-│   │   ├── Bookings.js
-│   │   └── BookingDetails.js
-│   ├── coupons/
-│   │   ├── Coupons.js
-│   │   └── CouponForm.js
-│   ├── pricing/
-│   │   └── Pricing.js
-│   ├── properties/
-│   │   ├── Properties.js
-│   │   └── PropertyForm.js
-│   ├── reports/
-│   │   └── Reports.js
-│   ├── rooms/
-│   │   ├── Rooms.js
-│   │   └── RoomForm.js
-│   ├── staff/
-│   │   └── Staff.js
-│   ├── users/
-│   │   └── Users.js
-│   └── Dashboard.js
-├── services/
-│   ├── api.js
-│   └── authService.js
-├── App.js
-└── index.js
+BWAdmin/
+├── client/                          # React Frontend
+│   ├── public/
+│   │   ├── index.html
+│   │   └── manifest.json
+│   ├── src/
+│   │   ├── components/
+│   │   │   └── common/
+│   │   │       └── ProtectedRoute.js
+│   │   ├── contexts/
+│   │   │   ├── AuthContext.js
+│   │   │   └── NotificationContext.js
+│   │   ├── layouts/
+│   │   │   ├── Layout.js
+│   │   │   ├── Header.js
+│   │   │   └── Sidebar.js
+│   │   ├── pages/
+│   │   │   ├── auth/
+│   │   │   ├── bookings/
+│   │   │   ├── coupons/
+│   │   │   ├── pricing/
+│   │   │   ├── properties/
+│   │   │   ├── reports/
+│   │   │   ├── rooms/
+│   │   │   ├── staff/
+│   │   │   ├── users/
+│   │   │   └── Dashboard.js
+│   │   ├── services/
+│   │   │   ├── api.js
+│   │   │   ├── authService.js
+│   │   │   ├── dashboardService.js
+│   │   │   ├── propertyService.js
+│   │   │   ├── roomService.js
+│   │   │   ├── bookingService.js
+│   │   │   ├── couponService.js
+│   │   │   ├── userService.js
+│   │   │   ├── staffService.js
+│   │   │   └── reportService.js
+│   │   ├── App.js
+│   │   └── index.js
+│   ├── package.json
+│   └── .env.example
+│
+├── server/                          # Node.js Backend
+│   ├── src/
+│   │   ├── data/
+│   │   │   ├── properties.js
+│   │   │   ├── rooms.js
+│   │   │   ├── bookings.js
+│   │   │   ├── coupons.js
+│   │   │   ├── users.js
+│   │   │   ├── staff.js
+│   │   │   └── dashboard.js
+│   │   ├── middlewares/
+│   │   │   ├── auth.js
+│   │   │   └── errorHandler.js
+│   │   ├── routes/
+│   │   │   ├── auth.js
+│   │   │   ├── dashboard.js
+│   │   │   ├── properties.js
+│   │   │   ├── rooms.js
+│   │   │   ├── bookings.js
+│   │   │   ├── coupons.js
+│   │   │   ├── users.js
+│   │   │   ├── staff.js
+│   │   │   └── reports.js
+│   │   └── app.js
+│   ├── server.js
+│   ├── package.json
+│   └── .env.example
+│
+├── package.json                     # Root package.json
+├── README.md
+└── .gitignore
 ```
 
 ## 🚦 Getting Started
@@ -92,22 +136,31 @@ src/
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/rdeena2001/BWAdminweb.git
    cd BWAdmin
    ```
 
-2. **Install dependencies**
+2. **Install dependencies for both client and server**
    ```bash
-   npm install
+   npm run install:all
    ```
 
-3. **Start the development server**
+3. **Set up environment variables**
    ```bash
-   npm start
+   # Copy environment files
+   cp client/.env.example client/.env
+   cp server/.env.example server/.env
    ```
 
-4. **Open your browser**
-   Navigate to `http://localhost:3000`
+4. **Start both frontend and backend**
+   ```bash
+   npm run dev
+   ```
+
+5. **Access the application**
+   - **Frontend**: `http://localhost:3000`
+   - **Backend API**: `http://localhost:5000`
+   - **API Health Check**: `http://localhost:5000/health`
 
 ### Demo Credentials
 - **Admin**: admin@bwadmin.com / admin123
